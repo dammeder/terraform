@@ -22,6 +22,7 @@ module "ec2" {
   
 }
 
+# CALLING CHILD MODULE FROM REGISTRY
 
 module "s3-bucket" {
   source = "terraform-aws-modules/s3-bucket/aws"
@@ -30,7 +31,13 @@ module "s3-bucket" {
 
 }
 
-
+# CALLING CHILD MODULE FROM GITHUB
 module "web-sg" {
-  source = ""
+  source = "github.com/dammeder/terraform//modules/sg"
+
+  name = "web-sg"
+  
 }
+
+# TERRAFORM ALWAYS LOOKS INTO DEFAULT BRANCH (main)
+
